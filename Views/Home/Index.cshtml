@@ -1,0 +1,20 @@
+@model InicioResumo
+@{ ViewData["Title"] = "Início"; }
+<section class="mb-4">
+    <h1>Gerenciamento do cardápio</h1>
+    <p class="text-secondary">Cadastre categorias e pratos e organize seu restaurante.</p>
+</section>
+<div class="row g-3 mb-4">
+    <div class="col-md-6"><div class="card shadow-sm h-100"><div class="card-body"><div class="text-secondary">Categorias cadastradas</div><div class="display-5 fw-bold">@Model.TotalCategorias</div><a asp-controller="Categorias" asp-action="Index">Ver categorias</a></div></div></div>
+    <div class="col-md-6"><div class="card shadow-sm h-100"><div class="card-body"><div class="text-secondary">Pratos cadastrados</div><div class="display-5 fw-bold">@Model.TotalPratos</div><a asp-controller="Pratos" asp-action="Index">Ver pratos</a></div></div></div>
+</div>
+<section class="card shadow-sm mb-4"><div class="card-body">
+    <h2 class="h4">Últimos pratos cadastrados</h2>
+    @if (Model.UltimosPratos.Count == 0) { <p>Nenhum prato cadastrado.</p> }
+    else {
+        <div class="table-responsive"><table class="table align-middle"><thead><tr><th>Prato</th><th>Categoria</th><th>Preço</th><th></th></tr></thead><tbody>
+        @foreach (var item in Model.UltimosPratos) { <tr><td>@item.Nome</td><td>@Model.NomesCategorias.GetValueOrDefault(item.CategoriaId, "Sem categoria")</td><td>@item.Preco.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td><td><a asp-controller="Pratos" asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a></td></tr> }
+        </tbody></table></div>
+    }
+</div></section>
+<div class="d-flex gap-2 flex-wrap"><a class="btn btn-primary" asp-controller="Categorias" asp-action="Criar">Nova categoria</a><a class="btn btn-outline-primary" asp-controller="Pratos" asp-action="Criar">Novo prato</a></div>

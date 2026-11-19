@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "MenuSolver": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50193;http://localhost:50195"
+    }
+  }
+}

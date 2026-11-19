@@ -1,0 +1,4 @@
+@model Prato
+@{ ViewData["Title"] = "Excluir prato"; }
+<h1>Excluir prato</h1><div class="alert alert-warning">Tem certeza de que deseja excluir o prato <strong>@Model.Nome</strong>?</div><p>Categoria: @ViewBag.NomeCategoria</p><p>Preço: @Model.Preco.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</p>
+<form method="post" asp-action="Excluir" asp-route-id="@Model.Id"><button class="btn btn-danger" type="submit">Confirmar exclusão</button><a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a></form>

@@ -1,0 +1,1 @@
+Adicione aqui prints reais do sistema em funcionamento. Não foram gerados prints porque o ambiente de preparação não possui o SDK .NET para iniciar a aplicação. Veja o README.md para a lista das telas.

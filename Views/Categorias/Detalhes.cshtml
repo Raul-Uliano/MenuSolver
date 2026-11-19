@@ -1,0 +1,7 @@
+@model Categoria
+@{ ViewData["Title"] = "Detalhes da categoria"; }
+<h1>@Model.Nome</h1><p>@(Model.Descricao ?? "Sem descrição.")</p>
+<h2 class="h4">Pratos desta categoria (@Model.Pratos.Count)</h2>
+@if (Model.Pratos.Count == 0) { <p>Esta categoria não possui pratos.</p> }
+else { <ul class="list-group mb-3">@foreach (var prato in Model.Pratos) { <li class="list-group-item d-flex justify-content-between"><span>@prato.Nome</span><a asp-controller="Pratos" asp-action="Detalhes" asp-route-id="@prato.Id">Ver prato</a></li> }</ul> }
+<a class="btn btn-primary" asp-action="Editar" asp-route-id="@Model.Id">Editar</a><a class="btn btn-outline-secondary" asp-action="Index">Voltar</a>
